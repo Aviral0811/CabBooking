@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, Long> {
     Driver findByName(String name);
-    List<Driver> findByCurrentLocation(Location source, Location destination, double maxDistance);
+
+    List<Driver> findByCurrentLocationAndDestinationLocationNear(Location source, Location destination, double maxDistance);
 }
 

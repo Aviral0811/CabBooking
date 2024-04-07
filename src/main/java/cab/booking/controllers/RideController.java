@@ -22,7 +22,7 @@ public class RideController {
                                           @RequestParam double destinationX, @RequestParam double destinationY) {
         Location source = new Location(sourceX, sourceY);
         Location destination = new Location(destinationX, destinationY);
-        List<Driver> availableDrivers = driverRepository.findByCurrentLocation(source, destination, 5);
+        List<Driver> availableDrivers = driverRepository.findByCurrentLocationAndDestinationLocationNear(source, destination, 5);
 
         if (availableDrivers.isEmpty()) {
             return ResponseEntity.notFound().build(); // No available drivers found
